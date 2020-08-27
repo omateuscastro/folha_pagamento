@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Cálculo de Folha de Pagamento</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="card mt-4">
+			<h5 class="card-header text-white bg-primary">Cálculo de Folha de Pagamento</h5>
+			<div class="card-body">
+				<p> Informe o nome do vendedor, o salário base, o valor das vendas do mês e a porcentagem de comissão,
+					em seguida
+					clique em <mark>"Calcular"</mark>, para exibir o valor do salário final.</p>
+
+				<form id="form_folha" action="/calcular" method="POST">
+
+					<div class="form-group">
+						<label for="nome">Nome</label>
+						<input id="nome" type="text" name="nome" value="<%=nome%>" class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="salario">Salário (R$)</label>
+						<input id="salario" type="number" step="any" min="0" name="salario" value="<%=salario%>"
+							class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="vendas">Vendas (R$)</label>
+						<input id="vendas" type="number" step="any" min="0" name="vendas"
+							value="<%=vendas%>" class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="comissao">Perc. Comissão (%)</label>
+						<input id="comissao" type="number" step="any" min="0" name="comissao"
+							value="<%=comissao%>" class="form-control">
+					</div>
+
+					<hr class="separator">
+
+					<div class="form-group">
+						<label for="salario_final">Salário Final (R$)</label>
+						<input id="salario_final" type="number" name="salario_final"
+							value="<%=salario_final%>" class="form-control" readonly>
+					</div>
+
+					<% if(mensagens.length > 0){ %>
+					<% mensagens.forEach(function(mensagem){ %>
+					<div class="alert alert-danger">
+						<strong>Alerta!</strong> <%= mensagem %>
+					</div>
+					<% }); %>
+					<% } %>
+				</form>
+			</div>
+			<div class="card-footer">
+				<a class="btn btn-success btn-lg" href="/">Novo</a>
+				<input class="btn btn-primary btn-lg" type="submit" value="Calcular" form="form_folha">
+			</div>
+		</div>
+	</div>
+
+	<footer class="page-footer font-small blue pt-4">
+		<div class="footer-copyright text-center py-3">© 2020 FolhaPagamento - Autor:
+			<a href="https://github.com/omateuscastro/"> Mateus Castro</a>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>
